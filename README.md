@@ -3,6 +3,7 @@ Sorting a 32 bit unsigned integer vector by using:
 - Radix Sort
 - Quick Sort
 - Merge Sort
+- Bubble Sort
 - Inbuilt Sort (Probably Tim Sort)
 
 This program takes a vector length as input and generates an array of random numbers of that size.

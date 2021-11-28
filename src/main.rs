@@ -7,16 +7,15 @@ mod merge_sort;
 use crate::merge_sort::merge_sort;
 mod quick_sort;
 use crate::quick_sort::quick_sort;
+mod bubble_sort;
+use crate::bubble_sort::bubble_sort;
 use structopt::StructOpt;
 
 #[derive(StructOpt)]
 struct Cli {
     /// The pattern to look for
-    array_len: u32,
+    array_len: usize,
 }
-
-
-
 
 
 
@@ -52,6 +51,12 @@ fn main() {
     println!("Quick sort time: {:.2?}", elapsed);
 
     let now = Instant::now();
+    let mut vec_clone_4 = vec.clone();
+    bubble_sort(&mut vec_clone_4); 
+    let elapsed = now.elapsed();
+    println!("Bubble sort time: {:.2?}", elapsed);
+
+    let now = Instant::now();
     vec.sort();     
     let elapsed = now.elapsed();
     println!("Inbuilt sort time: {:.2?}", elapsed);
@@ -68,10 +73,13 @@ fn checker() {
     quick_sort(&mut vec3);
     let mut vec4 = vec1.clone(); 
     merge_sort(&mut vec4);
+    let mut vec5 = vec1.clone(); 
+    bubble_sort(&mut vec5);
     vec1.sort();
     assert_eq!(vec1, vec2);
     assert_eq!(vec1, vec3);
     assert_eq!(vec1, vec4);
+    assert_eq!(vec1, vec5);
 }
 
 
