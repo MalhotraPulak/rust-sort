@@ -15,6 +15,11 @@ struct Cli {
     array_len: u32,
 }
 
+
+
+
+
+
 fn main() {
     let args = Cli::from_args();
     let count = args.array_len;
@@ -51,12 +56,22 @@ fn main() {
     let elapsed = now.elapsed();
     println!("Inbuilt sort time: {:.2?}", elapsed);
 
-    for i in 0..vec.len(){
-        // println!("{}", vec_clone_3[i]);
-        if vec[i] != vec_clone_2[i] || vec[i] != vec_clone[i] || vec[i] != vec_clone_3[i] { 
-            println!("All sorts are not same");
-            return;
-        }
-    }
-    println!("All sorts are correct");
 }
+
+
+#[test]
+fn checker() {
+    let mut vec1 = vec![1, 3, 3, 2, 1, 1, 5, 5, 10, 13, 3, 33, 0, 11, 1]; 
+    let mut vec2 = vec1.clone(); 
+    radix_sort(&mut vec2);
+    let mut vec3 = vec1.clone(); 
+    quick_sort(&mut vec3);
+    let mut vec4 = vec1.clone(); 
+    merge_sort(&mut vec4);
+    vec1.sort();
+    assert_eq!(vec1, vec2);
+    assert_eq!(vec1, vec3);
+    assert_eq!(vec1, vec4);
+}
+
+

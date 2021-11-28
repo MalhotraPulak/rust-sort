@@ -19,10 +19,13 @@ fn quick_sort_helper(v: &mut Vec<u32>, start: usize , end: usize){
         }
     }
 
-    v.swap(start, left - 1); 
+    if left > 0 { 
+        v.swap(start, left - 1); 
+    }
     
-
-    quick_sort_helper(v, start, left - 2); 
+    if left >= 2 {
+        quick_sort_helper(v, start, left - 2); 
+    }
     quick_sort_helper(v, right + 1, end); 
     
 }
